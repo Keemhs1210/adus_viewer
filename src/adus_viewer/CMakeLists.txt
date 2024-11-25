@@ -61,7 +61,7 @@ catkin_package(
 # Add executable
 # ------------------------------------------------
 add_executable(${PROJECT_NAME}_node
-  src/Viewer/viewer_node.cpp
+  src/adus_viewer_node.cpp
   src/Viewer/viewer.cpp
   src/Input/input_topic.cpp
   src/Logic/preprocess.cpp
