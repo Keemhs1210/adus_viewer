@@ -8,7 +8,7 @@ void AdusViewer::AdusInit()
     // Subscribe callback class
     shared_ptr<InputTopic> input_topic = make_shared<InputTopic>(node_, private_nh_,
                                           &stVehicleInfo, &stEgoInfo,
-                                          &stGpsInfo, &stPathInfo, &stLTrajInfo);
+                                          &stGpsInfo, &stPathInfo, &stLTrajInfo, &stTargetInfo);
     sub_image = node_.subscribe("/image_jpeg/compressed", 1, &AdusViewer::Image_callback, this);
     // Publish callback variable
     pub_Vehicle = node_.advertise<visualization_msgs::MarkerArray>("vehicle_bounding_boxes", 1);
@@ -103,11 +103,6 @@ void AdusViewer::DrawPath()
 void AdusViewer::DrawText()
 {
     jsk_rviz_plugins::OverlayText overlay_text;
-   // 데이터를 변수로 정의
-    double speed = 30.0;       // km/h
-    double heading = 45.0;     // degrees
-    double gps_lat = 37.5665;  // 위도
-    double gps_lon = 126.9780; // 경도
     // 텍스트의 기본 정보 설정
     overlay_text.action = jsk_rviz_plugins::OverlayText::ADD;
     overlay_text.width = 320;
@@ -132,11 +127,13 @@ void AdusViewer::DrawText()
     // float32_t fX 
     // 텍스트 내용 동적으로 생성
     std::ostringstream oss;
-    oss << "Ego Vehicle Information\n"
+    oss << "[Ego Vehicle Information]\n"
         << " GPS: " << stGpsInfo.dLat << ", " << stGpsInfo.dLat
+        << "\n\n"
+        << "[Target Vehicle Information]\n" 
+        << "X : " << stTargetInfo.fX_m  << " Y: " << stTargetInfo.fY_m
         << "\n"
-        << "Target Vehicle Information\n" 
-        << "X : " ;
+        << "TTC: " << stTargetInfo.fTTC << " Speed: " << stTargetInfo.fSpeedRel;
 
 
 

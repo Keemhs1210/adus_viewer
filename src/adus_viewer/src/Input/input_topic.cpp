@@ -3,6 +3,7 @@
 // Callback Function List
 void InputTopic::ObjInfo_callback(const morai_msgs::ObjectStatusList &objInfo)
 {
+    int32_t iNumOfObj = 0;
     float64_t dX_m = 0;
     float64_t dY_m = 0;
     float64_t dZ_m = 0;
@@ -12,8 +13,8 @@ void InputTopic::ObjInfo_callback(const morai_msgs::ObjectStatusList &objInfo)
     float64_t dHeading_deg = 0;
     float64_t dHeadingOffset_deg = 90;
 
-    pstVehicleInfo_->iNumOfVehicle = objInfo.num_of_npcs;
-    for (int32_t i = 0; i < pstVehicleInfo_->iNumOfVehicle; i++)
+    
+    for (int32_t i = 0; i < objInfo.num_of_npcs; i++)
     {
         dX_m = objInfo.npc_list[i].position.x;
         dY_m = objInfo.npc_list[i].position.y;
@@ -23,14 +24,58 @@ void InputTopic::ObjInfo_callback(const morai_msgs::ObjectStatusList &objInfo)
         dHeight_m = objInfo.npc_list[i].size.z;
         dHeading_deg = objInfo.npc_list[i].heading;
 
-        pstVehicleInfo_->stEachOfVehicle[i].dX_m = dX_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dY_m = dY_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dZ_m = dZ_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dLength_m = dLength_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dWidth_m = dWidth_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dHeight_m = dHeight_m;
-        pstVehicleInfo_->stEachOfVehicle[i].dHeading_deg = dHeading_deg + dHeadingOffset_deg;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dX_m = dX_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dY_m = dY_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dZ_m = dZ_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dLength_m = dLength_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dWidth_m = dWidth_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeight_m = dHeight_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeading_deg = dHeading_deg + dHeadingOffset_deg;
+        iNumOfObj++;
     }
+        
+    for (int32_t i = 0; i < objInfo.num_of_pedestrian; i++)
+    {
+        dX_m = objInfo.pedestrian_list[i].position.x;
+        dY_m = objInfo.pedestrian_list[i].position.y;
+        dZ_m = objInfo.pedestrian_list[i].position.z + 1.1;
+        dLength_m = objInfo.pedestrian_list[i].size.x;
+        dWidth_m = objInfo.pedestrian_list[i].size.y;
+        dHeight_m = objInfo.pedestrian_list[i].size.z;
+        dHeading_deg = objInfo.pedestrian_list[i].heading;
+
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dX_m = dX_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dY_m = dY_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dZ_m = dZ_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dLength_m = dLength_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dWidth_m = dWidth_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeight_m = dHeight_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeading_deg = dHeading_deg + dHeadingOffset_deg;
+        iNumOfObj++;
+    }
+
+            
+    for (int32_t i = 0; i < objInfo.num_of_obstacle; i++)
+    {
+        dX_m = objInfo.obstacle_list[i].position.x;
+        dY_m = objInfo.obstacle_list[i].position.y;
+        dZ_m = objInfo.obstacle_list[i].position.z + 1.1;
+        dLength_m = objInfo.obstacle_list[i].size.x;
+        dWidth_m = objInfo.obstacle_list[i].size.y;
+        dHeight_m = objInfo.obstacle_list[i].size.z;
+        dHeading_deg = objInfo.obstacle_list[i].heading;
+
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dX_m = dX_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dY_m = dY_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dZ_m = dZ_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dLength_m = dLength_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dWidth_m = dWidth_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeight_m = dHeight_m;
+        pstVehicleInfo_->stEachOfVehicle[iNumOfObj].dHeading_deg = dHeading_deg + dHeadingOffset_deg;
+        iNumOfObj++;
+    }
+    pstVehicleInfo_->iNumOfVehicle = iNumOfObj;
+
 }
 
 void InputTopic::EgoInfo_callback(const morai_msgs::EgoVehicleStatus &EgoInfo)
@@ -151,9 +196,34 @@ void InputTopic::LTajInfo_callback(const adss_msgs::DCD01_LTraj &LTrajInfo)
     }
 }
 
+void InputTopic::TargetInfo_callback(const adss_msgs::DCP11_TargetObject &TargetInfo)
+{
+    int32_t iValid = 0;
+    float32_t fX_m = 0;
+    float32_t fY_m = 0;
+    float32_t fTTC = 0.;
+    float32_t fSpeedRel = 0;
+
+    iValid = TargetInfo.e_val_Validity_1x1;
+    if(iValid != 0)
+    {
+        fX_m = TargetInfo.f_Pose_X_1x1;
+        fY_m = TargetInfo.f_Pose_Y_1x1;
+        fTTC = TargetInfo.f_TTC_1x1;
+        fSpeedRel = TargetInfo.f_SpeedRel_1x1;
+
+        pstTargetInfo_->fX_m = fX_m;
+        pstTargetInfo_->fY_m = fY_m;
+        pstTargetInfo_->fTTC = fTTC;
+        pstTargetInfo_->fSpeedRel = fSpeedRel;
+        printf("%f %f", fX_m, fY_m);
+    }
+}
+
 InputTopic::InputTopic(ros::NodeHandle node, ros::NodeHandle private_nh,
                        VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo,
-                       GPS_INFO *pstGpsInfo, PATH_INFO *pstPathInfo, LOCAL_TRAJ_INFO *pstLTrajInfo)
+                       GPS_INFO *pstGpsInfo, PATH_INFO *pstPathInfo,
+                       LOCAL_TRAJ_INFO *pstLTrajInfo, TARGET_INFO *pstTargetInfo)
     : AdusViewer(node, private_nh)
 {
     ROS_INFO("Receive the Ros Topic");
@@ -171,4 +241,6 @@ InputTopic::InputTopic(ros::NodeHandle node, ros::NodeHandle private_nh,
     sub_GpsInfo = node.subscribe("gps", 1, &InputTopic::GpsInfo_callback, this);
     sub_PathInfo = node.subscribe("choice_path", 1, &InputTopic::PathInfo_callback, this);
     sub_LTrajInfo = node.subscribe("LTraj", 1, &InputTopic::LTajInfo_callback, this);
+    sub_TargetInfo = node.subscribe("target_obj", 1, &InputTopic::TargetInfo_callback, this);
 }
+

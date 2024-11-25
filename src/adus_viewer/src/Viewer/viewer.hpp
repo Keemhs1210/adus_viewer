@@ -29,6 +29,7 @@ private:
     GPS_INFO stGpsInfo;
     PATH_INFO stPathInfo;
     LOCAL_TRAJ_INFO stLTrajInfo;
+    TARGET_INFO stTargetInfo;
 
     int32_t iWidth = 0;
     int32_t iHeight = 0;
@@ -50,6 +51,7 @@ inline AdusViewer::AdusViewer(ros::NodeHandle node, ros::NodeHandle private_nh)
     memset(&stEgoInfo, 0, sizeof(EGO_INFO));
     memset(&stPathInfo, 0, sizeof(PATH_INFO));
     memset(&stLTrajInfo, 0, sizeof(LOCAL_TRAJ_INFO));
+    memset(&stTargetInfo, 0, sizeof(TARGET_INFO));
 }
 
 inline visualization_msgs::Marker AdusViewer::DrawMarker(float64_t dX_m, float64_t dY_m, float64_t dZ_m,

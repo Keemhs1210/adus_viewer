@@ -113,3 +113,8 @@ POINT2D Preprocess::DegreeToUTM(float64_t dLat, float64_t dLon)
     stUtmCoord.dY = utm_y;
     return stUtmCoord;
 }
+
+void Preprocess::SearchTargetObj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo, TARGET_INFO *pstTargetInfo)
+{
+    ;
+}

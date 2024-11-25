@@ -17,6 +17,7 @@
 #include "adss_msgs/DBZ03_Route.h"
 #include "adss_msgs/DCD01_LTraj.h"
 #include "adss_msgs/DEZ28_WayPoint.h"
+#include "adss_msgs/DCP11_TargetObject.h"
 
 #include "morai_msgs/GPSMessage.h"
 #include "morai_msgs/ObjectStatusList.h"
@@ -110,6 +111,17 @@ typedef struct PATH_INFO_t
     float64_t dX_m[MAX_NUM_PATH];
     float64_t dY_m[MAX_NUM_PATH];
 }PATH_INFO;
+
+
+typedef struct TARGET_INFO_t
+{
+    int32_t iValidFlag;
+    float32_t fX_m;
+    float32_t fY_m;
+    float32_t fTTC;
+    float32_t fSpeedRel;
+}TARGET_INFO;
+
 
 typedef struct POINT2D_t
 {
