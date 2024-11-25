@@ -1,0 +1,8 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint8 u8_CompDiag_1x1
+uint16 u16_Freq_1x1
+DCP04_EgoMotionEst DCP04_EgoMotionEst_1x1
+DCG03_FailOPMode DCG03_FailOPMode_1x1
+DCG00_OPMode DCG00_OPMode_1x1
+DCG01_FuncParam DCG01_FuncParam_1x1

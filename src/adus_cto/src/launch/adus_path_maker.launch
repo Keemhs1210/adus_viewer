@@ -1,0 +1,15 @@
+<launch>
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d /home/koceti/catkin_ws/rviz_config/rviz_adus_path_maker.rviz"/>
+
+    <node pkg="adus_cto" type="path_maker_kkyu" name="path_maker_kkyu" output="screen">
+        <param name="lla_traj" value="/home/koceti/catkin_ws/path/origin_trajectory_lla/"/>
+        <param name="utm_path" value="/home/koceti/catkin_ws/path/rddf_path_utm/"/>
+        <param name="lla_route" value="/home/koceti/catkin_ws/path/rddf_path_lla/"/>
+
+        <param name="frame_id" value="map"/>
+		<param name="interpolation_num" value="100"/>
+		<param name="locate_dist" value="1.0"/>
+    </node>
+    
+</launch>

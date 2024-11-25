@@ -1,0 +1,4 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint8 u8_CompDiag_1x1
+uint16 u16_Freq_1x1

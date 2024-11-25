@@ -1,0 +1,6 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint8 u8_Status_1x1
+float32 f_H_1x1
+float32 f_Y_1x1
+float32 f_X_1x1

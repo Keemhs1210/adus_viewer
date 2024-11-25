@@ -1,0 +1,5 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+DEZ23_VRUCInfo st_e_DEZ23_VRUCInfo_1x1
+DEZ21_VRUCStatic st_e_DEZ21_VRUCStatic_1x1
+uint8 u8_ObjNum_1x1

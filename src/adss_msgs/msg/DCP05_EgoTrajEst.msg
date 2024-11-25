@@ -1,0 +1,6 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+float32 f_Coef3rd_1x1
+float32 f_CoefConst_1x1
+float32 f_Coef1st_1x1
+float32 f_Coef2nd_1x1

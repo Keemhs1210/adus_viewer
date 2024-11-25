@@ -1,0 +1,9 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_en_PlatformStatus_1x1
+uint8[] u8_CompStatus_25x1
+uint32 e_bool_TerminationDone_1x1
+uint8 u8_SendStatus_1x1
+int32 i32_ControllerStatus_1x1
+uint32 u32_RecvFreqStatus_1x1
+int32 i32_SensorStatus_1x1

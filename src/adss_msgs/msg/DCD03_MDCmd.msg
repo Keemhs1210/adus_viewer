@@ -1,0 +1,12 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+float32 f_StopLocation_Y_1x1
+float32 f_StopLocation_X_1x1
+uint32 e_act_ObjAvoidance_1x1
+uint32 e_act_StopBy_1x1
+uint32 e_act_OverT_1x1
+uint32 e_act_LaCh_Right_1x1
+uint32 e_act_LaCh_Left_1x1
+float32 f_SpeedReduction_1x1
+uint32 e_act_StopAt_1x1
+uint32 e_act_LaCe_1x1

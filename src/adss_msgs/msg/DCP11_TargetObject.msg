@@ -1,0 +1,12 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_val_Validity_1x1
+float32 f_Dim_Height_1x1
+float32 f_Dim_Length_1x1
+float32 f_Dim_Width_1x1
+float32 f_Pose_H_1x1
+float32 f_Pose_Y_1x1
+float32 f_Pose_X_1x1
+float32 f_SpeedRel_1x1
+float32 f_Clearance_1x1
+float32 f_TTC_1x1

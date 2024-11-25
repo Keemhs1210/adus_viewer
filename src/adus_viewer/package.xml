@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>adus_viewer</name>
+  <version>1.0.0</version>
+  <description>The adus_viewer package</description>
+  <maintainer email="hyunsoo.kim@adus.ai">Hyunsoo Kim</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- ROS1 -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>rospy</depend>
+  <!-- Message -->
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>adss_msgs</depend>
+  <depend>morai_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>jsk_rviz_plugins</depend>
+  <depend>visualization_msgs</depend>
+  
+</package>

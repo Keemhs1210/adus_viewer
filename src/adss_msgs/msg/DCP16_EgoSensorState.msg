@@ -1,0 +1,12 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_dm_DriveManner_1x1
+uint32 e_tm_AEBTimingMode_1x1
+uint8 u8_VehCtrlStatus_1x1
+uint32 e_gear_pos_GearPos_1x1
+uint32 e_val_Validity_1x1
+uint32 e_tm_LDWTimingMode_1x1
+uint16 u16_StatusBody_1x1
+uint32 e_on_StatusVehicle_1x1
+uint8 u8_StatusOverride_1x1
+uint16 u16_StatusSwitch_1x1

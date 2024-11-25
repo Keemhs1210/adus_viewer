@@ -1,0 +1,13 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+float32 f_YawRate_1x1
+uint32 e_val_Validity_1x1
+uint32 e_gear_pos_GearPos_1x1
+float32 f_AccStatus_1x1
+float32 f_StrWhlTorqueStatus_1x1
+float32 f_StrWhlAngleStatus_1x1
+float32 f_AccStatusLat_1x1
+float32 f_SpeedStatusLat_1x1
+DEZ11_IMUStatus st_e_DEZ11_IMUStatus_1x1
+float32 f_SpeedStatus_1x1
+DEZ10_WhlODOM st_e_DEZ10_WhlODOM_1x1

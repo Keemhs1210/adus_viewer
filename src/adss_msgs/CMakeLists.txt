@@ -1,0 +1,157 @@
+cmake_minimum_required(VERSION 3.0.2)
+project(adss_msgs)
+
+find_package(catkin REQUIRED COMPONENTS
+  std_msgs
+  message_generation
+)
+
+add_message_files(
+  FILES
+  DBZ00_VehicleSensorStatus.msg
+  DBZ01_EUNoti.msg
+  DBZ02_MissionCmdFMS.msg
+  DBZ03_Route.msg
+  DBZ04_SystemStatus.msg
+  DBZ05_TOPCmd.msg
+  DBZ06_VehiclePoseCorr.msg
+  DBZ07_VehiclePoseDummy.msg
+  DBZ08_VehiclePos.msg
+  DBZ09_SystemStatusVHMI.msg
+  DBZ10_RawData_Imager.msg
+  DBZ11_RawData_Radar.msg
+  DBZ12_RawData_Uss.msg
+  DBZ13_RawData_LiDAR.msg
+  DBZ14_PTCtrlCmd.msg
+  DBZ15_TOPScene.msg
+  DCC00_MotionLong_SS.msg
+  DCC01_MotionLong_AD.msg
+  DCC02_MotionLat_SS.msg
+  DCC03_MotionLat_AD.msg
+  DCC04_IndicatorCmd.msg
+  DCC06_MotionLL.msg
+  DCD00_PathSeg.msg
+  DCD01_LTraj.msg
+  DCD02_BDCmd.msg
+  DCD03_MDCmd.msg
+  DCD04_SDCmd.msg
+  DCG00_OPMode.msg
+  DCG01_FuncParam.msg
+  DCG02_DiagnosticsMain.msg
+  DCG03_FailOPMode.msg
+  DCG04_EventLog.msg
+  DCG04_EventLog_SS_Log.msg
+  DCG05_VehicleData.msg
+  DCG06_SystemDaig.msg
+  DCG07_MissionCmd.msg
+  DCP00_PCFeature.msg
+  DCP01_VisualFeature.msg
+  DCP02_PCODOM.msg
+  DCP03_VisualODOM.msg
+  DCP04_EgoMotionEst.msg
+  DCP05_EgoTrajEst.msg
+  DCP06_ODList.msg
+  DCP08_ObjectList_VRUC.msg
+  DCP09_ObjectList_L.msg
+  DCP10_LDM.msg
+  DCP11_TargetObject.msg
+  DCP12_VehiclePose.msg
+  DCP13_OTListDyn.msg
+  DCP15_OTListStat.msg
+  DCP16_EgoSensorState.msg
+  DCP17_LDMInfo.msg
+  DCP20_OTList_MPC.msg
+  DCP21_OTList_FRR.msg
+  DCP22_OTList_CRR.msg
+  DCP23_OTList_Imager.msg
+  DCP24_OTList_USS.msg
+  DEZ01_SigProp.msg
+  DEZ02_DiagPFC.msg
+  DEZ03_SigPropArray.msg
+  DEZ10_WhlODOM.msg
+  DEZ11_IMUStatus.msg
+  DEZ20_VRUCList.msg
+  DEZ21_VRUCStatic.msg
+  DEZ22_VRUCDyn.msg
+  DEZ23_VRUCInfo.msg
+  DEZ24_VRUCTraj.msg
+  DEZ25_VRUCFusion.msg
+  DEZ26_LaneList.msg
+  DEZ27_LaneMarkerList.msg
+  DEZ28_WayPoint.msg
+  DEZ29_TrafficSign.msg
+  DEZ30_ObjectList_VRUC_Compact.msg
+  DTZ01_DiagnosticsCmd_AD.msg
+  DTZ02_DiagnosticsCmd_SS.msg
+  DTZ03_EStopRC.msg
+  DTZ04_EUActionRC.msg
+  DTZ05_LLControlCmd_RC.msg
+  DTZ06_RCCmdH.msg
+  DTZ07_SatelliteSig.msg
+  DTZ08_TOPCmdH.msg
+  DTZ09_VehiclePoseVRS.msg
+  LBZ00_Generic.msg
+  LBZ01_Perception.msg
+  LBZ02_Decision.msg
+  LBZ03_Control.msg
+  LBZ04_Communication.msg
+  LCC01_LMP.msg
+  LCC03_LAMP.msg
+  LCC04_IM.msg
+  LCC05_MergeMotion.msg
+  LCD00_PathPlanning.msg
+  LCD01_LTrajPlanning.msg
+  LCD02_BD.msg
+  LCD03_MD.msg
+  LCD04_SD.msg
+  LCG00_OPMan.msg
+  LCG01_FuncMan.msg
+  LCG02_DiagMain.msg
+  LCG03_FailOperation.msg
+  LCG07_MissionHandler.msg
+  LCM00_CoreA_RxCoreB.msg
+  LCM01_CoreA_RxVehiclePoseCorr.msg
+  LCM02_CoreA_RxRoute.msg
+  LCM03_CoreA_RxOSF.msg
+  LCM04_CoreA_RxOSR.msg
+  LCM05_CoreA_RxCRR.msg
+  LCM06_CoreA_RxUSS.msg
+  LCM10_CoreA_TxCoreB.msg
+  LCM11_CoreA_TxOSF.msg
+  LCM12_CoreA_TxOSR.msg
+  LCM13_CoreA_TxCRR.msg
+  LCM14_CoreA_TxUSS.msg
+  LCM20_CoreB_RxVSP.msg
+  LCM21_CoreB_RxCoreA.msg
+  LCM22_CoreB_RxMPC.msg
+  LCM23_CoreB_RxFRR.msg
+  LCM24_CoreB_RxMissionCmdFMS.msg
+  LCM30_CoreB_TxVCS.msg
+  LCM31_CoreB_TxCoreA.msg
+  LCM32_CoreB_TxMPC.msg
+  LCM33_CoreB_TxFRR.msg
+  LCM34_CoreB_TxFMS.msg
+  LCP01_ExtractFeatures.msg
+  LCP02_ODOMCal.msg
+  LCP06_OD.msg
+  LCP07_OT.msg
+  LCP08_ObjFusion.msg
+  LCP09_LE.msg
+  LCP11_LMB.msg
+  LCP12_Localization.msg
+  LCP13_ObjFiltering.msg
+  LCP14_EME.msg
+  st_e_DEZ27_LaneMarkerList_1x1.msg
+  st_s_DCD01_LTraj_1x1.msg
+  ZZZ_000_path_sel_msg.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS message_runtime std_msgs
+)
+

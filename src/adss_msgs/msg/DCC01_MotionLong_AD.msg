@@ -1,0 +1,5 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_act_Acceleration_1x1
+float32 f_Acceleration_1x1
+float32 f_TargetSpeed_1x1

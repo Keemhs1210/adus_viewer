@@ -1,0 +1,6 @@
+std_msgs/Header header
+LCG00_OPMan st_LCG00_OPMan
+LCG01_FuncMan st_LCG01_FuncMan
+LCG02_DiagMain st_LCG02_DiagMain
+LCG03_FailOperation st_LCG03_FailOperation
+LCG07_MissionHandler st_LCG07_MissionHandler

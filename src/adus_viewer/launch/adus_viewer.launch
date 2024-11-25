@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="adus_viewer" type="adus_viewer_node" name="adus_viewer_node"  required="true"
+    output="screen"/>
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find adus_viewer)/rviz/adus_viewer_rviz.rviz"/>
+
+</launch>

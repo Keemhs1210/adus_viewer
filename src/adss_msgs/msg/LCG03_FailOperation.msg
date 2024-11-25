@@ -1,0 +1,7 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint8 u8_CompDiag_1x1
+DEZ01_SigProp InSP_DCG00_OPMode1x1
+DEZ01_SigProp InSP_DCG02_DiagnosticsMain1x1
+DEZ01_SigProp InSP_DCG01_FuncParam1x1
+DCG03_FailOPMode DCG03_FailOPMode1x1

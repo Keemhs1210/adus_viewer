@@ -1,0 +1,3 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_opm_OPMode_1x1

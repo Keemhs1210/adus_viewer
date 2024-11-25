@@ -1,0 +1,10 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint8 u8_CompDiag_1x1
+DEZ01_SigProp InSP_DBZ13_RawData_LiDAR1x1
+DEZ01_SigProp InSP_DBZ10_RawData_Imager1x1
+DEZ01_SigProp InSP_DCG01_FuncParam1x1
+DEZ01_SigProp InSP_DCG00_OPMode1x1
+DEZ01_SigProp InSP_DCG03_FailOPMode1x1
+DCP00_PCFeature DCP00_PCFeature1x1
+DCP01_VisualFeature DCP01_VisualFeature1x1

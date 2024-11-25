@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/adus/koceti_hil_ws/devel/include/**",
+        "/home/adus/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/adus/koceti_hil_ws/src/adus_cto/src/include/**",
+        "/home/adus/koceti_hil_ws/src/adus_viewer/include/**",
+        "/home/adus/koceti_hil_ws/src/u02_eadmsolution_hil/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,12 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_en_EnableActuation_Long_1x1
+uint32 e_en_EnableActuation_Lat_1x1
+float32 f_ManualSpeed_1x1
+float32 f_StopLocation_Y_1x1
+float32 f_StopLocation_X_1x1
+uint32 e_mcmd_ManeuverCmd_1x1
+uint8 u8_Mission_StopBy_1x1
+uint8 u8_Mission_Maneuver_1x1
+uint32 e_on_Mission_LimitSpeed_1x1
+uint32 e_on_Mission_Go_1x1

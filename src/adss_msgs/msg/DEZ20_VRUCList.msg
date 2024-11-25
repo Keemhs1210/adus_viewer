@@ -1,0 +1,6 @@
+uint8 u8_DynObjNum_1x1
+DEZ23_VRUCInfo st_e_DynDEZ23_VRUCInfo_1x1
+DEZ23_VRUCInfo st_e_StaticDEZ23_VRUCInfo_1x1
+DEZ22_VRUCDyn st_e_DEZ22_VRUCDyn_1x1
+uint8 u8_StaticObjNum_1x1
+DEZ21_VRUCStatic st_e_DEZ21_VRUCStatic_1x1

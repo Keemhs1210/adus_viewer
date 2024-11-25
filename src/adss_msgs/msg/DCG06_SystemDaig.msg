@@ -1,0 +1,5 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_en_PlatformStatus_1x1
+uint16[] u16_Frequency_24x1
+uint8[] u8_CompStatus_25x1

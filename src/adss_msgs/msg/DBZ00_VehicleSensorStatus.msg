@@ -1,0 +1,17 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_dm_DriveManner_1x1
+uint8 u8_VehCtrlStatus_1x1
+float32 f_YawRate_1x1
+uint16 u16_StatusBody_1x1
+uint16 u16_StatusSwtich_1x1
+uint8 u8_StatusOverride_1x1
+uint32 e_ign_StatusIgn_1x1
+float32 f_StrAngleStatus_1x1
+float32 f_SpeedStatusChassis_1x1
+float32 f_SpeedStatusWhl_1x1
+float32 f_StrWhlTorqueStatus_1x1
+DEZ11_IMUStatus st_e_DEZ11_IMUStatus_1x1
+float32 f_AccStatus_1x1
+float32 f_StrWhlAngleStatus_1x1
+uint32 e_gear_pos_GearPosition_1x1

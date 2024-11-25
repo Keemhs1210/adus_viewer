@@ -1,0 +1,12 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+uint32 e_val_Validity_1x1
+float32 f_Event_SpeedReduction_1x1
+DCP04_EgoMotionEst st_s_DCP04_EgoMotionEst_1x1
+DCD01_LTraj st_s_DCD01_LTraj_1x1
+DCP05_EgoTrajEst st_s_DCP05_EgoTrajEst_1x1
+DEZ24_VRUCTraj st_e_DEZ24_VRUCTraj_1x1
+DCP11_TargetObject st_s_DCP11_TargetObject_1x1
+DCP09_ObjectList_L st_s_DCP09_ObjectList_L_1x1
+DCP08_ObjectList_VRUC st_s_DCP08_ObjectList_VRUC_1x1
+uint8[] u8_GridMap_7x3

@@ -1,0 +1,6 @@
+std_msgs/Header header
+uint8 e_val_Valid_1x1
+float32 f_Coef1st_1x1
+float32 f_Coef2nd_1x1
+float32 f_Coef3rd_1x1
+float32 f_CoefConst_1x1

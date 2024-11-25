@@ -1,0 +1,3 @@
+std_msgs/Header header
+DEZ01_SigProp st_s_DEZ01_SigProp_1x1
+DEZ20_VRUCList st_e_DEZ20_VRUCList_1x1

@@ -1,0 +1,13 @@
+float32 f_Height_1x1
+float32 f_H_1x1
+float32 f_Length_1x1
+float32 f_Width_1x1
+uint8 u8_StatusObject_1x1
+uint32 e_vruc_c_ClassType_1x1
+uint8 u8_TrackingSensorType_1x1
+uint32 u32_ID_1x1
+uint32 u32_UUID_1x1
+float32[] f_StateCovariance_6x6
+uint8 u8_StateMaturity_1x1
+float32[] f_States_6x1
+uint8 u8_StateTrack_1x1
