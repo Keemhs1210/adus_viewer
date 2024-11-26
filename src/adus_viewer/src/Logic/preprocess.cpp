@@ -1,7 +1,9 @@
 #include "preprocess.hpp"
 
-void Preprocess::CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo)
+void Preprocess::CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo, TARGET_INFO *pstTargetInfo)
 {
+    float64_t dX_m = 0;
+    float64_t dY_m = 0;
     float64_t dRelX_m = 0;
     float64_t dRelY_m = 0;
     float64_t dNewX_m = 0;
@@ -26,16 +28,29 @@ void Preprocess::CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_IN
             pstVehicleInfo->stEachOfVehicle[i].dRelX_m = dNewX_m;
             pstVehicleInfo->stEachOfVehicle[i].dRelY_m = dNewY_m;
             
-            float64_t dDist = sqrt(dNewX_m * dNewX_m + dNewY_m * dNewY_m);
-            if(dMinDist > dDist)
+          
+
+            if(pstTargetInfo->iValidFlag == 1)
             {
-                iMinIdx = i;
-                dMinDist = dDist;
+                dX_m = (float64_t)pstTargetInfo->fX_m;   
+                dY_m = (float64_t)pstTargetInfo->fY_m;   
+                float64_t dDiffX_m = dX_m - dNewX_m;
+                float64_t dDiffY_m = dY_m - dNewY_m;
+                float64_t dDist = (dDiffX_m * dDiffX_m + dDiffY_m * dDiffY_m);
+                if(dDist < 0.5 * 0.5)
+                {
+                    pstVehicleInfo->stEachOfVehicle[i].iTargetFlag = 1;
+                    pstVehicleInfo->iTargetIdx = i;
+                }
+                else
+                {
+                    pstVehicleInfo->stEachOfVehicle[i].iTargetFlag = -1;
+                      pstVehicleInfo->iTargetIdx = -1;
+                }
             }
         }
        
-        pstVehicleInfo->stEachOfVehicle[iMinIdx].iTargetFlag = 1;
-        pstVehicleInfo->iTargetIdx = iMinIdx;
+        
     }
 }
 
@@ -112,9 +127,4 @@ POINT2D Preprocess::DegreeToUTM(float64_t dLat, float64_t dLon)
     stUtmCoord.dX = utm_x;
     stUtmCoord.dY = utm_y;
     return stUtmCoord;
-}
-
-void Preprocess::SearchTargetObj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo, TARGET_INFO *pstTargetInfo)
-{
-    ;
 }

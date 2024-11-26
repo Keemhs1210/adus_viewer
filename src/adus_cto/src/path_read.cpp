@@ -89,7 +89,7 @@ void path_read::read_rddf_path(std::string file_directory, std::vector<waypoints
     std::ifstream rddf(file_directory);                                         
     std::string way_point;
     std::string point_0;                                                     
-    float_t x_0, y_0;
+    double x_0, y_0;
 	float_t vel;
 	float_t mission;
 
@@ -100,8 +100,8 @@ void path_read::read_rddf_path(std::string file_directory, std::vector<waypoints
 
 	waypoints wp;  
 	
-	wp.lat = (float_t)x_0;
-	wp.lng = (float_t)y_0;
+	wp.lat = (double)x_0;
+	wp.lng = (double)y_0;
 	wp.vel = (int16_t)vel;
 	wp.mission = (uint8_t)mission;  
 
@@ -120,8 +120,8 @@ void path_read::read_rddf_path(std::string file_directory, std::vector<waypoints
 
         point_data >> x_0 >> y_0 >> vel >> mission;  
 
-		wp.lat = (float_t)x_0;
-		wp.lng = (float_t)y_0;
+		wp.lat = (double)x_0;
+		wp.lng = (double)y_0;
 		wp.vel = (int16_t)vel;
 		wp.mission = (uint8_t)mission;         
     }
@@ -175,7 +175,7 @@ void path_read::final_sel_path_pub(std::vector<waypoints> path)
 }
 
 
-void path_read::rviz_point_draw(visualization_msgs::Marker &pt, double pt_x, double pt_y, float x, float y, float z, float r, float g, float b)
+void path_read::rviz_point_draw(visualization_msgs::Marker &pt, double pt_x, double pt_y, double x, double y, double z, double r, double g, double b)
 {
 	pt.points.clear();
     geometry_msgs::Point point;
@@ -208,7 +208,7 @@ void path_read::rddf_read()
 	read_rddf_path(path_01_dir_, path_01_);
 	read_rddf_path(path_02_dir_, path_02_);
 	read_rddf_path(path_03_dir_, path_03_);
-
+	
 	while(ros::ok())
 	{
 		ros::spinOnce();

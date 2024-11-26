@@ -146,7 +146,7 @@ void path_maker_kkyu::re_locate(double locate_dist, std::vector<waypoints> inter
     }
 }
 
-void path_maker_kkyu::rviz_cur_pose_draw(visualization_msgs::Marker &cur_point, float x, float y, float z, float r, float g, float b, double x_pt, double y_pt)
+void path_maker_kkyu::rviz_cur_pose_draw(visualization_msgs::Marker &cur_point, double x, double y, double z, double r, double g, double b, double x_pt, double y_pt)
 {
     geometry_msgs::Point point;
 

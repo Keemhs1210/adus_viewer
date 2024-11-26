@@ -13,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   adss_msgs
   morai_msgs
-
 )
 
 catkin_package(

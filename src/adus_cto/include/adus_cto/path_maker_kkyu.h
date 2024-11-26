@@ -60,7 +60,7 @@ public:
     void localizerCallback(const morai_msgs::GPSMessage::ConstPtr &localizer_pose);
     void relocate_calc(double locate_dist, int n0, std::vector<waypoints> interpol_path, double &calc_dist, int &id_n);
     void re_locate(double locate_dist, std::vector<waypoints> interpol_path, std::vector<waypoints> &relocate_path);
-    void rviz_cur_pose_draw(visualization_msgs::Marker &cur_point, float x, float y, float z, float r, float g, float b, double x_pt, double y_pt);
+    void rviz_cur_pose_draw(visualization_msgs::Marker &cur_point, double x, double y, double z, double r, double g, double b, double x_pt, double y_pt);
 
 public:
     void path_making();

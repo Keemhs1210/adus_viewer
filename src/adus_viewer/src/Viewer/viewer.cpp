@@ -103,7 +103,6 @@ void AdusViewer::DrawPath()
 void AdusViewer::DrawText()
 {
     jsk_rviz_plugins::OverlayText overlay_text;
-    // 텍스트의 기본 정보 설정
     overlay_text.action = jsk_rviz_plugins::OverlayText::ADD;
     overlay_text.width = 320;
     overlay_text.height = 240;
@@ -113,31 +112,30 @@ void AdusViewer::DrawText()
     overlay_text.line_width = 2;
     overlay_text.font = "DejaVu Sans Mono";
 
-    // 텍스트 색상 설정
     overlay_text.fg_color.r = 1.0;
     overlay_text.fg_color.g = 1.0;
     overlay_text.fg_color.b = 1.0;
     overlay_text.fg_color.a = 1.0;
 
-    // 배경 색상 설정
     overlay_text.bg_color.r = 0.0;
     overlay_text.bg_color.g = 0.0;
     overlay_text.bg_color.b = 0.0;
     overlay_text.bg_color.a = 0.5;
-    // float32_t fX 
-    // 텍스트 내용 동적으로 생성
+
+    float64_t dDist = sqrt(stTargetInfo.fX_m  * stTargetInfo.fX_m  + (stTargetInfo.fY_m * stTargetInfo.fY_m ));
+    
     std::ostringstream oss;
-    oss << "[Ego Vehicle Information]\n"
-        << " GPS: " << stGpsInfo.dLat << ", " << stGpsInfo.dLat
+    oss << "[Ego Info]\n" << std::fixed << std::setprecision(8)
+        << " Lat: " << stGpsInfo.dLat << "\n" << "Lon: " << stGpsInfo.dLon
         << "\n\n"
-        << "[Target Vehicle Information]\n" 
-        << "X : " << stTargetInfo.fX_m  << " Y: " << stTargetInfo.fY_m
-        << "\n"
-        << "TTC: " << stTargetInfo.fTTC << " Speed: " << stTargetInfo.fSpeedRel;
+        << "[Target Info]\n" << std::fixed << std::setprecision(2)
+        << "Dist:" << dDist << "m\n"
+        << "TTC:" << stTargetInfo.fTTC << "sec\n"
+        << "Speed: " << stTargetInfo.fSpeedRel << "mps\n";
 
 
 
-    overlay_text.text = oss.str(); // 생성된 텍스트를 메시지에 추가
+    overlay_text.text = oss.str();
 
     // 퍼블리시
     pub_Text.publish(overlay_text);

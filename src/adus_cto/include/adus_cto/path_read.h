@@ -8,6 +8,7 @@
 #include "adss_msgs/DEZ28_WayPoint.h"
 #include "adss_msgs/DBZ03_Route.h"
 
+
 #include <ros/ros.h>
 #include <fstream>
 #include <iostream>
@@ -22,8 +23,8 @@
 
 typedef struct waypoints
 {
-    float_t lat;
-    float_t lng;
+    double lat;
+    double lng;
     int16_t vel;
     uint8_t mission;
 } waypoints;
@@ -66,8 +67,7 @@ public:
     void read_rddf_path(std::string file_directory, std::vector<waypoints> &origin_path);
     nav_msgs::Path wp_2_nav_path(std::vector<waypoints> wp_path);
     void final_sel_path_pub(std::vector<waypoints> path);
-    void rviz_point_draw(visualization_msgs::Marker &pt, double pt_x, double pt_y, float x, float y, float z, float r, float g, float b);
-
+    void rviz_point_draw(visualization_msgs::Marker &pt, double pt_x, double pt_y, double x, double y, double z, double r, double g, double b);
 public:
     void rddf_read();
 };

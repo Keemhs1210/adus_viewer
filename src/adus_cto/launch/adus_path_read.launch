@@ -1,0 +1,13 @@
+<launch>
+    <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d /home/koceti/catkin_ws/rviz_config/adus_path_read.rviz"/> -->
+	 <node type="rviz" name="rviz" pkg="rviz" args="-d $(find adus_cto)/rviz_config/adus_path_read.rviz"/> 
+    <node pkg="adus_cto" type="key_input_node" name="key_input_node"/>
+
+    <node pkg="adus_cto" type="path_read_node" name="path_read_node" output="screen">
+        <param name="frame_id" value="map"/>
+        <param name="path_01" value="$(find adus_cto)/path/rddf_path_lla/Close_Loop.txt"/>
+        <param name="path_02" value="$(find adus_cto)/path/rddf_path_lla/AEBS_Test.txt"/>
+        <param name="path_03" value="$(find adus_cto)/rddf_path_lla/AEBS_Test_long.txt"/>
+    </node>
+
+</launch>

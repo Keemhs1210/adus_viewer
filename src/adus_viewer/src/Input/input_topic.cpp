@@ -107,7 +107,7 @@ void InputTopic::EgoInfo_callback(const morai_msgs::EgoVehicleStatus &EgoInfo)
     pstEgoInfo_->dHeading_deg = dHeading_deg + dHeadingOffset_deg;
 
 
-    preprocess_ptr->CalcRelativeCoordinate_Obj(pstVehicleInfo_, pstEgoInfo_);
+    preprocess_ptr->CalcRelativeCoordinate_Obj(pstVehicleInfo_, pstEgoInfo_, pstTargetInfo_);
 }
 
 void InputTopic::GpsInfo_callback(const morai_msgs::GPSMessage &gpsInfo)
@@ -178,7 +178,7 @@ void InputTopic::LTajInfo_callback(const adss_msgs::DCD01_LTraj &LTrajInfo)
     float32_t fY = 0;
     float32_t fNewX = 0;
     float32_t fNewY = 0;
-    const float32_t fDist = 20;
+    const float32_t fDist = 8;
     float32_t fStep = fDist / (float32_t)MAX_NUM_LTRAJ;
     float64_t dHeadingOffset_deg = MORAI_HEADING_OFFSET;
     float64_t dHeadingOffset_rad =  dHeadingOffset_deg * PI / 180.;
@@ -205,6 +205,7 @@ void InputTopic::TargetInfo_callback(const adss_msgs::DCP11_TargetObject &Target
     float32_t fSpeedRel = 0;
 
     iValid = TargetInfo.e_val_Validity_1x1;
+    pstTargetInfo_->iValidFlag = iValid;
     if(iValid != 0)
     {
         fX_m = TargetInfo.f_Pose_X_1x1;
@@ -212,11 +213,17 @@ void InputTopic::TargetInfo_callback(const adss_msgs::DCP11_TargetObject &Target
         fTTC = TargetInfo.f_TTC_1x1;
         fSpeedRel = TargetInfo.f_SpeedRel_1x1;
 
-        pstTargetInfo_->fX_m = fX_m;
-        pstTargetInfo_->fY_m = fY_m;
+        pstTargetInfo_->fX_m = fY_m;
+        pstTargetInfo_->fY_m = fX_m;
         pstTargetInfo_->fTTC = fTTC;
         pstTargetInfo_->fSpeedRel = fSpeedRel;
-        printf("%f %f", fX_m, fY_m);
+    }
+    else{
+
+        pstTargetInfo_->fX_m = 0;
+        pstTargetInfo_->fY_m = 0;
+        pstTargetInfo_->fTTC = 0;
+        pstTargetInfo_->fSpeedRel = 0;
     }
 }
 
@@ -235,6 +242,7 @@ InputTopic::InputTopic(ros::NodeHandle node, ros::NodeHandle private_nh,
     pstGpsInfo_ = pstGpsInfo;
     pstPathInfo_ = pstPathInfo;
     pstLTrajInfo_ = pstLTrajInfo;
+    pstTargetInfo_ = pstTargetInfo;
 
     sub_ObjInfo = node.subscribe("Object_topic", 1, &InputTopic::ObjInfo_callback, this);
     sub_EgoInfo = node.subscribe("Ego_topic", 1, &InputTopic::EgoInfo_callback, this);

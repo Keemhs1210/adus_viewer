@@ -8,9 +8,8 @@ class Preprocess
 public:
     Preprocess(){};
     ~Preprocess() {}
-    void CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo);
+    void CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo, TARGET_INFO *pstTargetInfo);
     void CalcRelativeCoordinate_Path(GPS_INFO *pstGpsInfo, PATH_INFO *pstPathInfo, EGO_INFO *pstEgoInfo);
-    void SearchTargetObj(VEHICLE_INFO *pstVehicleInfo, EGO_INFO *pstEgoInfo, TARGET_INFO *pstTargetInfo);
 
 private:
 
