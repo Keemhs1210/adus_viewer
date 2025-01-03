@@ -14,8 +14,6 @@ void Preprocess::CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_IN
 
     if (pstVehicleInfo->iNumOfVehicle > 0)
     {
-        int32_t iMinIdx = 0;
-        float64_t dMinDist = 99999999.;
         for (int32_t i = 0; i < pstVehicleInfo->iNumOfVehicle; i++)
         {
             pstVehicleInfo->stEachOfVehicle[i].iTargetFlag = 0;
@@ -56,6 +54,8 @@ void Preprocess::CalcRelativeCoordinate_Obj(VEHICLE_INFO *pstVehicleInfo, EGO_IN
 
 void Preprocess::CalcRelativeCoordinate_Path(GPS_INFO *pstGpsInfo, PATH_INFO *pstPathInfo, EGO_INFO *pstEgoInfo)
 {
+    float64_t dDist = 0.;
+    float64_t dMinDist = FLT_MAX;
     float64_t dHeadingOffset_rad = 0 * (M_PI / 180.0);
     // GPS & Global Path
     if (pstGpsInfo->dLat > 0 && pstGpsInfo->dLon > 0)
@@ -82,6 +82,14 @@ void Preprocess::CalcRelativeCoordinate_Path(GPS_INFO *pstGpsInfo, PATH_INFO *ps
         
             pstPathInfo->dX_m[iIdxI] = dNewX;
             pstPathInfo->dY_m[iIdxI] = dNewY;
+
+            dDist = dNewX * dNewX + dNewY * dNewY;
+            if(dDist < dMinDist)
+            {
+                dMinDist = dDist;
+                pstPathInfo->dNearestLat = dLat;
+                pstPathInfo->dNearestLon = dLon;
+            }
 
         }
     }

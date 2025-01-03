@@ -7,7 +7,9 @@
 // Msg Lib
 #include <nav_msgs/Path.h>
 #include <geometry_msgs/Vector3.h>
+#include <sensor_msgs/PointCloud2.h>
 #include <sensor_msgs/CompressedImage.h>
+#include <sensor_msgs/Imu.h>
 #include <visualization_msgs/Marker.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <visualization_msgs/Marker.h>
@@ -81,6 +83,8 @@ typedef struct EGO_INFO_t
     float64_t dLength_m;
     float64_t dHeight_m;
     float64_t dHeading_deg;
+    float64_t dSpeed_kph;
+    float64_t dAcceleration_mpss;
 }EGO_INFO;
 
 typedef struct GPS_INFO_t
@@ -106,12 +110,14 @@ typedef struct LOCAL_TRAJ_INFO_t
 typedef struct PATH_INFO_t
 {
     int32_t iNumOfPath;
+    float64_t dNearestLat;
+    float64_t dNearestLon;
     float64_t dLon[MAX_NUM_PATH];
     float64_t dLat[MAX_NUM_PATH];
     float64_t dX_m[MAX_NUM_PATH];
     float64_t dY_m[MAX_NUM_PATH];
+    
 }PATH_INFO;
-
 
 typedef struct TARGET_INFO_t
 {
@@ -121,6 +127,13 @@ typedef struct TARGET_INFO_t
     float32_t fTTC;
     float32_t fSpeedRel;
 }TARGET_INFO;
+
+typedef struct IMU_INFO_t
+{
+    float64_t dRoll;
+    float64_t dPitch;
+    float64_t dYaw;
+}IMU_INFO;
 
 
 typedef struct POINT2D_t
@@ -138,15 +151,4 @@ typedef struct POINT3D_t
     float64_t dZ;
 
 }POINT3D;
-
-
-typedef struct EulerAngle_t
-{
-    float64_t dRoll;
-    float64_t dPitch;
-    float64_t dYaw;
-
-}EulerAngle;
-
-
 #endif

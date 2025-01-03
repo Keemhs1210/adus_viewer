@@ -8,7 +8,8 @@ void AdusViewer::AdusInit()
     // Subscribe callback class
     shared_ptr<InputTopic> input_topic = make_shared<InputTopic>(node_, private_nh_,
                                           &stVehicleInfo, &stEgoInfo,
-                                          &stGpsInfo, &stPathInfo, &stLTrajInfo, &stTargetInfo);
+                                          &stGpsInfo, &stPathInfo, &stLTrajInfo, &stTargetInfo,
+                                          &stImuInfo);
     sub_image = node_.subscribe("/image_jpeg/compressed", 1, &AdusViewer::Image_callback, this);
     // Publish callback variable
     pub_Vehicle = node_.advertise<visualization_msgs::MarkerArray>("vehicle_bounding_boxes", 1);
@@ -104,8 +105,8 @@ void AdusViewer::DrawText()
 {
     jsk_rviz_plugins::OverlayText overlay_text;
     overlay_text.action = jsk_rviz_plugins::OverlayText::ADD;
-    overlay_text.width = 320;
-    overlay_text.height = 240;
+    overlay_text.width = 340;
+    overlay_text.height = 380;
     overlay_text.left = 0;
     overlay_text.top = 240;
     overlay_text.text_size = 14;
@@ -123,21 +124,32 @@ void AdusViewer::DrawText()
     overlay_text.bg_color.a = 0.5;
 
     float64_t dDist = sqrt(stTargetInfo.fX_m  * stTargetInfo.fX_m  + (stTargetInfo.fY_m * stTargetInfo.fY_m ));
-    
+
     std::ostringstream oss;
-    oss << "[Ego Info]\n" << std::fixed << std::setprecision(8)
-        << " Lat: " << stGpsInfo.dLat << "\n" << "Lon: " << stGpsInfo.dLon
+    oss << "[Ego Info]\n"
+        << std::fixed << std::setprecision(1)
+        << "Velocity: " << stEgoInfo.dSpeed_kph << "kph\n"
+        << "Acceleration: " << stEgoInfo.dAcceleration_mpss << "mpss\n"
+        << "Heading: " << stEgoInfo.dHeading_deg << "deg\n"
+        << "Roll: " << stImuInfo.dRoll << "deg" << " "
+        << "Pitch: " << stImuInfo.dPitch << "deg\n"
+        // << "Yaw: " << stImuInfo.dYaw << "deg\n"
+        << std::fixed << std::setprecision(12)
+        << "Lat: " << stGpsInfo.dLat << "\n"
+        << "Lon: " << stGpsInfo.dLon
         << "\n\n"
-        << "[Target Info]\n" << std::fixed << std::setprecision(2)
+        << "[Target Info]\n"
+        << std::fixed << std::setprecision(1)
         << "Dist:" << dDist << "m\n"
-        << "TTC:" << stTargetInfo.fTTC << "sec\n"
-        << "Speed: " << stTargetInfo.fSpeedRel << "mps\n";
-
-
+        << "TTC:" << fabs(stTargetInfo.fTTC) << "msec\n"
+        << "Speed: " << fabs(stTargetInfo.fSpeedRel) << "mps\n\n"
+        << "[Nearest Global Path]\n"
+        << std::fixed << std::setprecision(12)
+        << "Lat: " << stPathInfo.dNearestLat << "\n"
+        << "Lon: " << stPathInfo.dNearestLon;
 
     overlay_text.text = oss.str();
 
-    // 퍼블리시
     pub_Text.publish(overlay_text);
 }
 

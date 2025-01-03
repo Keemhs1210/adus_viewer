@@ -30,6 +30,8 @@ private:
     PATH_INFO stPathInfo;
     LOCAL_TRAJ_INFO stLTrajInfo;
     TARGET_INFO stTargetInfo;
+    IMU_INFO stImuInfo;
+
 
     int32_t iWidth = 0;
     int32_t iHeight = 0;
@@ -80,7 +82,7 @@ inline visualization_msgs::Marker AdusViewer::DrawMarker(float64_t dX_m, float64
 
     if (iFlag == 0) // Ego
     {
-        dHeading_rad = (90) * (M_PI / 180.);
+        dHeading_rad = (MORAI_HEADING_OFFSET) * (M_PI / 180.);
         marker.pose.orientation.z = sin(dHeading_rad / 2.0);
         marker.pose.orientation.w = cos(dHeading_rad / 2.0);
 
